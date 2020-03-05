@@ -1,0 +1,4 @@
+App.json
+Data/*
+!Data/.Data
+node_modules/

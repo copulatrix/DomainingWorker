@@ -1,0 +1,23 @@
+{
+  "name": "DomainingWorker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "OnStart.js",
+  "scripts": {
+    "start": "node OnStart.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/copulatrix/DomainingWorker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/copulatrix/DomainingWorker/issues"
+  },
+  "homepage": "https://github.com/copulatrix/DomainingWorker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
