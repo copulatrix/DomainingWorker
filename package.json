@@ -1,5 +1,5 @@
 {
-  "name": "DomainingWorker",
+  "name": "domainingworker",
   "version": "1.0.0",
   "description": "",
   "main": "OnStart.js",
