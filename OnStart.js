@@ -32,6 +32,8 @@ app.get('/update', function(req, res){
                     stderr: NPMstderr
                 }
             });
+
+            process.exit(1);
         });
     });
 });
