@@ -72,6 +72,7 @@ function Work(I, Callback){
                 (data.indexOf(`No match for "${global.Worker.Words[I].toUpperCase()}.COM"`) != -1)
             ){
                 global.Worker.Availiable.push(`${global.Worker.Words[I]}.com`);
+                SetStatus(`Found: ${global.Worker.Words[I]}.com`);
                 request.post({
                     url: `https://${_Secret}:${_Secret}@domaining.fadebit.com/api/worker/domains`,
                     form: {
@@ -79,7 +80,8 @@ function Work(I, Callback){
                     },
                     json: true
                 }, function(error, response, body){
-                    //
+                    console.log('error', error);
+                    console.log('body', body);
                 });
             }
             Work(I+1, Callback);
