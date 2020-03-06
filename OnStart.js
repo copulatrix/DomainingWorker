@@ -66,23 +66,28 @@ new CronJob('0 * * * * *', function(){
 function Work(I, Callback){
     if(global.Worker.Words[I]){
         whois.lookup(`${global.Worker.Words[I]}.com`, function(error, data){
-            if(
-                (data.indexOf(`No match for domain "${global.Worker.Words[I].toUpperCase()}.COM"`) != -1)
-                ||
-                (data.indexOf(`No match for "${global.Worker.Words[I].toUpperCase()}.COM"`) != -1)
-            ){
-                global.Worker.Availiable.push(`${global.Worker.Words[I]}.com`);
-                SetStatus(`Found: ${global.Worker.Words[I]}.com`);
-                request.post({
-                    url: `https://${_Secret}:${_Secret}@domaining.fadebit.com/api/worker/domains`,
-                    form: {
-                        Domain: `${global.Worker.Words[I]}.com`
-                    },
-                    json: true
-                }, function(error, response, body){
-                    console.log('error', error);
-                    console.log('body', body);
-                });
+            if(error){
+                console.log(error);
+            }else{
+                if(
+                    (data.indexOf(`No match for domain "${global.Worker.Words[I].toUpperCase()}.COM"`) != -1)
+                    ||
+                    (data.indexOf(`No match for "${global.Worker.Words[I].toUpperCase()}.COM"`) != -1)
+                ){
+                    global.Worker.Availiable.push(`${global.Worker.Words[I]}.com`);
+                    SetStatus(`Found: ${global.Worker.Words[I]}.com`);
+                    request.post({
+                        url: `https://${_Secret}:${_Secret}@domaining.fadebit.com/api/worker/domains`,
+                        form: {
+                            Domain: `${global.Worker.Words[I]}.com`
+                        },
+                        json: true
+                    }, function(error, response, body){
+                        if(error){
+                            console.log(error);
+                        }
+                    });
+                }
             }
             Work(I+1, Callback);
         });
